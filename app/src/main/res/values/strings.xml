@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ejercicio2.3_JensyVillafranca_TareaIIParcial</string>
+    <string name="boton">Salvar</string>
+    <string name="descripcion">Descripción</string>
+    <string name="verFotos">Ver Fotos Tomadas</string>
+    <string name="ingreseDescripcion">Ingrese la descripción de la foto</string>
+</resources>
