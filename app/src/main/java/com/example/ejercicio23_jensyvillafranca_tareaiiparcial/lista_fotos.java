@@ -26,9 +26,9 @@ public class lista_fotos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_fotos);
         miListView = findViewById(R.id.listViewFotos);
+
         connection = new connection(this, transacciones_bd.nombre_bd, null, 1);
-
-
+        getDatos();
         // Obtén todos los modelos de la base de datos
         List<Photograh> modelos = getAllPhotos();
 
@@ -48,7 +48,7 @@ public class lista_fotos extends AppCompatActivity {
         if (cursor.moveToFirst()) {
             do {
                 int columnIndexImagen = cursor.getColumnIndex(transacciones_bd.imagen);
-                int columnIndexDescripcion = cursor.getColumnIndex(transacciones_bd.imagen);
+                int columnIndexDescripcion = cursor.getColumnIndex(transacciones_bd.descripcion);
 
                 Photograh modelo = new Photograh();
                 modelo.setImagen(cursor.getBlob(columnIndexImagen));
@@ -65,5 +65,15 @@ public class lista_fotos extends AppCompatActivity {
         // Retorna la lista de modelos
         return modeloList;
     }
-
+    private void getDatos() {
+        SQLiteDatabase db = connection.getReadableDatabase();
+        Photograh photograh = null;
+        Cursor cursor = db.rawQuery(transacciones_bd.SelectTableFotos,null);
+        while (cursor.moveToNext()){
+            photograh = new Photograh();
+            photograh.setDescripcion(cursor.getString(1));
+            miList.add(photograh);
+        }
+        cursor.close();
+    }
 }

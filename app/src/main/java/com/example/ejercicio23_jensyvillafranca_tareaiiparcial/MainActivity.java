@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
         );
         // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath();
+        //Log.d("El path",currentPhotoPath);
         //currentPhotoPath permite obtener la url donde está ubicada nuestra imagen
         return image;
     }
