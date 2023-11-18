@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     /*Metódo de permisos de la camara*/
                     permisosCamara();
-
                 }
             });
 
@@ -193,6 +192,9 @@ public class MainActivity extends AppCompatActivity {
         if(descripcion.getText().toString().isEmpty()){
             retorna = false;
         }
+        if( imageView.getDrawable() == null){
+            retorna = false;
+        }
         //validar si la foto esta vacia
         return retorna;
     }
@@ -281,6 +283,10 @@ public class MainActivity extends AppCompatActivity {
         if(descripcion.getText().toString().isEmpty()){
             builder.setTitle("Advertencia");
             builder.setMessage("Escriba su descripción por favor");
+        }
+        if(imageView.getDrawable() == null){
+            builder.setTitle("Advertencia");
+            builder.setMessage("Ingrese su imagen por favor");
         }
         builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
